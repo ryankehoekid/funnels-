@@ -4,45 +4,59 @@ This file provides guidance for AI assistants working with the `funnels-` reposi
 
 ## Project Overview
 
-This is a new, freshly initialized repository. The project name suggests a funnel-building or conversion funnel application. As the codebase evolves, this document should be updated to reflect the current architecture and conventions.
+A premium sales landing page for **The Whole Woman Reset** — a 30-day health reset programme by Ryan. The page is a static HTML/CSS/JS site with no build tools or dependencies. Brand colours: green and white.
 
-## Repository Status
+## Project Structure
 
-- **Current state**: Empty repository — no source code, dependencies, or configuration files have been added yet.
-- **Remote**: `origin` at `ryankehoekid/funnels-`
+```
+funnels-/
+├── index.html              # Main landing page (all sections)
+├── assets/
+│   ├── css/
+│   │   └── styles.css      # All styling — CSS custom properties, responsive
+│   ├── js/
+│   │   └── main.js         # Scroll animations, accordion, smooth scroll
+│   └── images/             # Image assets (add client photos here)
+└── CLAUDE.md
+```
 
-## Getting Started (for contributors)
+## Running Locally
 
-Once the project is bootstrapped, update this section with:
-- Language and framework choices
-- How to install dependencies
-- How to run the development server
-- How to run tests
-- How to build for production
+No build step. Just open `index.html` in a browser. For a local server:
 
-## Development Conventions
+```bash
+python3 -m http.server 8000
+# then visit http://localhost:8000
+```
 
-### Git Workflow
+## Key Technical Details
 
-- Create feature branches off the main branch
-- Use clear, descriptive commit messages
-- Push to feature branches; open pull requests for review before merging
+- **Fonts**: Playfair Display (headings) + Inter (body) via Google Fonts
+- **CSS Architecture**: BEM naming, CSS custom properties for theming in `:root`
+- **Animations**: Intersection Observer triggers `.is-visible` on `[data-animate]` elements
+- **Accordion**: Pure JS toggle with `.is-open` class, one-open-at-a-time per group
+- **Responsive**: Mobile-first breakpoints at 480px, 768px, 1024px
+- **No dependencies**: Zero npm packages, no frameworks, no build tools
 
-### Code Style
+## Brand Colours (CSS Custom Properties)
 
-Document linting, formatting, and style guidelines here once tooling is configured (e.g., ESLint, Prettier, Black, Ruff).
+- `--green-600: #1e7f4d` (primary CTA)
+- `--green-700: #1a6640` (headings, accents)
+- `--green-50: #f0faf4` (light backgrounds)
+- `--white: #ffffff` / `--cream: #fafaf7` (section backgrounds)
 
-### Testing
+## Conventions
 
-Document testing framework and commands here once tests are added.
+- Keep it static HTML/CSS/JS — no frameworks
+- BEM class naming: `.block__element--modifier`
+- Use `data-animate` attribute on elements that should fade in on scroll
+- All copy lives directly in `index.html` (no CMS or templating)
+- Sections alternate between `section--white`, `section--cream`, `section--green` backgrounds
 
-## Architecture
+## Hosting
 
-Document the high-level architecture, directory structure, and key design patterns here as the project takes shape.
-
-## Updating This File
-
-Keep this file up to date as the project evolves. It should always reflect:
-- How to build, test, and run the project
-- Key architectural decisions and patterns
-- Conventions that contributors and AI assistants should follow
+Pure static site. Deploy via:
+- **GitHub Pages** — enable in repo settings
+- **Netlify** — drag & drop or connect repo
+- **Vercel** — connect repo
+- Any static hosting provider
