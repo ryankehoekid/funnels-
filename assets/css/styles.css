@@ -45,6 +45,9 @@
   --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
   --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
   --shadow-xl: 0 16px 48px rgba(0,0,0,0.10);
+
+  --gold-accent: #c9a96e;
+  --gold-light: rgba(201, 169, 110, 0.12);
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -726,6 +729,242 @@ em { font-style: italic; }
   .hero__title { font-size: 2.25rem; }
   .included__bonuses-header span::before,
   .included__bonuses-header span::after { width: 30px; }
+}
+
+/* ══════════════════════════════════════════
+   PREMIUM EFFECTS
+   ══════════════════════════════════════════ */
+
+/* ── Subtle noise/grain texture overlay for depth ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Wave section dividers ── */
+.wave-divider {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  line-height: 0;
+  margin-top: -1px;
+  background: transparent;
+}
+.pain + .section--cream + .wave-divider,
+.hero + .wave-divider { background: transparent; }
+.wave-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.wave-divider--flip { transform: rotate(180deg); margin-top: 0; margin-bottom: -1px; }
+
+/* ── Decorative thin gold line accents ── */
+.section__title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green-400), var(--gold-accent));
+  margin-top: 1rem;
+  border-radius: 2px;
+}
+.section__title--center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Glassmorphism card variants ── */
+.outcomes__card,
+.features__card,
+.testimonial-card,
+.bonus-card {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.outcomes__card:hover,
+.features__card:hover,
+.testimonial-card:hover,
+.bonus-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.testimonial-card--featured {
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(240,250,244,0.9) 100%);
+}
+
+/* ── Refined pricing card glow ── */
+.pricing__card-inner {
+  position: relative;
+  background: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(42, 157, 97, 0.1),
+    0 16px 48px rgba(0, 0, 0, 0.12),
+    0 0 80px rgba(42, 157, 97, 0.08);
+}
+
+/* ── Subtle shimmer on hero title ── */
+.hero__title-accent {
+  background: linear-gradient(135deg, var(--green-600), var(--green-400), var(--green-600));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+/* ── Stats bar premium styling ── */
+.stats-bar {
+  border: 1px solid rgba(42, 157, 97, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.stats-bar__number {
+  background: linear-gradient(135deg, var(--green-700), var(--green-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Premium callout styling ── */
+.nobody-told__callout,
+.urgency__callout {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(42, 157, 97, 0.15);
+  box-shadow: 0 8px 32px rgba(42, 157, 97, 0.06);
+}
+.nobody-told__callout::before,
+.urgency__callout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green-400), var(--gold-accent), var(--green-400));
+}
+
+/* ── Method steps refined connecting line ── */
+.method__steps::before {
+  background: linear-gradient(to bottom, var(--green-200), var(--green-500), var(--gold-accent), var(--green-500), var(--green-200));
+}
+
+/* ── Guarantee badge glow ── */
+.guarantee__badge svg {
+  filter: drop-shadow(0 2px 8px rgba(42, 157, 97, 0.2));
+}
+
+/* ── Premium included core box ── */
+.included__core {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--green-200);
+  box-shadow: 0 8px 40px rgba(42, 157, 97, 0.06);
+}
+.included__core::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(42, 157, 97, 0.03), transparent, rgba(201, 169, 110, 0.03), transparent);
+  animation: rotate-glow 12s linear infinite;
+  pointer-events: none;
+}
+@keyframes rotate-glow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Varied scroll animations ── */
+[data-animate="fade-left"] {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+}
+[data-animate="fade-right"] {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+}
+[data-animate="fade-scale"] {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity var(--duration) var(--ease-out), transform var(--duration) var(--ease-out);
+}
+[data-animate="fade-left"].is-visible,
+[data-animate="fade-right"].is-visible,
+[data-animate="fade-scale"].is-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* ── Premium hero scroll indicator ── */
+.hero__scroll-indicator span {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--green-400), var(--gold-accent), transparent);
+}
+
+/* ── Smooth parallax offset class (applied via JS) ── */
+.hero__bg-pattern {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ── Section title em styling ── */
+.section__title em {
+  color: var(--green-600);
+  font-style: italic;
+}
+
+/* ── Refined footer ── */
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gray-700), transparent);
+}
+
+/* ── Premium button pulse for primary CTAs ── */
+.btn--primary {
+  position: relative;
+}
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--green-500), var(--green-400));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  filter: blur(12px);
+}
+.btn--primary:hover::before {
+  opacity: 0.4;
 }
 
 /* ── EXTRAS ── */
