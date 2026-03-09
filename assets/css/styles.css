@@ -178,7 +178,7 @@ em { font-style: italic; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem var(--section-pad-x) 4rem;
+  padding: 7rem var(--section-pad-x) 4rem;
   background: linear-gradient(170deg, var(--white) 0%, var(--green-50) 40%, var(--cream) 100%);
   position: relative;
   overflow: hidden;
@@ -965,6 +965,173 @@ body::before {
 }
 .btn--primary:hover::before {
   opacity: 0.4;
+}
+
+/* ══════════════════════════════════════════
+   URGENCY BANNER
+   ══════════════════════════════════════════ */
+.urgency-banner {
+  background: linear-gradient(90deg, var(--green-950), var(--green-800), var(--green-950));
+  color: var(--white);
+  padding: 0.7rem var(--section-pad-x);
+  text-align: center;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+}
+.urgency-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.08), transparent);
+  pointer-events: none;
+}
+.urgency-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+.urgency-banner__badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--gold-accent);
+  color: var(--green-950);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+.urgency-banner p {
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+}
+.urgency-banner p strong {
+  color: var(--white);
+  font-weight: 700;
+}
+.urgency-banner__link {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gold-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.urgency-banner__link:hover {
+  color: var(--white);
+}
+
+/* ══════════════════════════════════════════
+   TRUST BADGES
+   ══════════════════════════════════════════ */
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+.trust-badge:hover {
+  opacity: 1;
+}
+.trust-badge svg {
+  width: 28px;
+  height: 28px;
+  color: var(--green-500);
+}
+.trust-badge span {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-500);
+}
+
+/* ══════════════════════════════════════════
+   STICKY CTA BAR
+   ══════════════════════════════════════════ */
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease-out);
+  pointer-events: none;
+}
+.sticky-cta.is-visible {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.sticky-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.875rem var(--section-pad-x);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(42, 157, 97, 0.12);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.08);
+}
+.sticky-cta__text {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.sticky-cta__text strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-900);
+}
+.sticky-cta__text span {
+  font-size: 0.8125rem;
+  color: var(--gray-500);
+}
+.sticky-cta__btn {
+  padding: 0.75rem 2rem;
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+/* ── Staggered card animation delays ── */
+.testimonials__grid [data-animate]:nth-child(2) { transition-delay: 0.12s; }
+.testimonials__grid [data-animate]:nth-child(3) { transition-delay: 0.24s; }
+.testimonials__grid [data-animate]:nth-child(4) { transition-delay: 0.36s; }
+
+/* ── Responsive: sticky CTA + urgency banner ── */
+@media (max-width: 768px) {
+  .sticky-cta__text span { display: none; }
+  .sticky-cta__inner { gap: 1rem; }
+  .urgency-banner__inner { gap: 0.5rem; }
+  .urgency-banner p { font-size: 0.75rem; }
+  .urgency-banner__link { display: none; }
+  .trust-badges { gap: 1rem; }
+  .trust-badge svg { width: 22px; height: 22px; }
+  .trust-badge span { font-size: 0.5625rem; }
+}
+
+@media (max-width: 480px) {
+  .sticky-cta__text strong { font-size: 0.875rem; }
+  .sticky-cta__btn { padding: 0.625rem 1.5rem; font-size: 0.8125rem; }
+  .trust-badges { gap: 0.75rem; }
 }
 
 /* ── EXTRAS ── */

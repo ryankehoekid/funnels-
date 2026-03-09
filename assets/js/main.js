@@ -88,6 +88,34 @@
     });
   }
 
+  /* ── Sticky CTA bar ── */
+  var stickyCta = document.getElementById('sticky-cta');
+  var heroSection = document.querySelector('.hero');
+  var pricingSection = document.getElementById('pricing');
+
+  if (stickyCta && heroSection) {
+    var stickyTicking = false;
+
+    window.addEventListener('scroll', function () {
+      if (!stickyTicking) {
+        requestAnimationFrame(function () {
+          var scrolled = window.pageYOffset;
+          var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+          var pricingTop = pricingSection ? pricingSection.offsetTop - window.innerHeight : Infinity;
+
+          if (scrolled > heroBottom && scrolled < pricingTop) {
+            stickyCta.classList.add('is-visible');
+          } else {
+            stickyCta.classList.remove('is-visible');
+          }
+
+          stickyTicking = false;
+        });
+        stickyTicking = true;
+      }
+    }, { passive: true });
+  }
+
   /* ── Subtle parallax on hero background ── */
   var heroBg = document.querySelector('.hero__bg-pattern');
   var hero = document.querySelector('.hero');
