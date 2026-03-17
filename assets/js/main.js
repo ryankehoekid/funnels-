@@ -174,4 +174,44 @@
       }
     });
   });
+
+  /* ── Spots counter (urgency/scarcity) ── */
+  var spotsEl = document.getElementById('spots-taken');
+  var fillEl = document.getElementById('spots-fill');
+  var totalSpots = 20;
+
+  if (spotsEl && fillEl) {
+    // Seed from session so it stays consistent per visitor
+    var stored = sessionStorage.getItem('wwr_spots');
+    var spots = stored ? parseInt(stored, 10) : 14 + Math.floor(Math.random() * 3); // 14-16
+    sessionStorage.setItem('wwr_spots', spots);
+
+    function updateDisplay(n) {
+      spotsEl.textContent = n;
+      fillEl.style.width = ((n / totalSpots) * 100) + '%';
+    }
+
+    updateDisplay(spots);
+
+    // Realistic ticking: random intervals between 15-90 seconds
+    // Mostly goes up, occasionally drops back by 1
+    function scheduleNext() {
+      var delay = (15 + Math.random() * 75) * 1000; // 15s - 90s
+      setTimeout(function () {
+        // 75% chance to go up, 25% to go down
+        // But clamp between 13 and 19 (never hits 20)
+        if (Math.random() < 0.75 && spots < 19) {
+          spots++;
+        } else if (spots > 13) {
+          spots--;
+        }
+        sessionStorage.setItem('wwr_spots', spots);
+        updateDisplay(spots);
+        scheduleNext();
+      }, delay);
+    }
+
+    // Start first tick after a short initial delay
+    setTimeout(scheduleNext, 8000 + Math.random() * 12000);
+  }
 })();
