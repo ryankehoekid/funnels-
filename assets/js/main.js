@@ -181,25 +181,23 @@
   var totalSpots = 20;
 
   if (spotsEl && fillEl) {
-    // Time-based count: everyone sees the same number at the same time.
-    // Set your launch date here (midnight UTC). Spots climb gradually over days.
-    var launchDate = new Date('2026-03-17T00:00:00Z');
+    // 48-hour launch window starting March 17 2026 at 8am GMT
+    var launchDate = new Date('2026-03-17T08:00:00Z');
     var now = Date.now();
     var hoursSinceLaunch = Math.max(0, (now - launchDate.getTime()) / (1000 * 60 * 60));
 
-    // Base growth: starts at ~4, gains roughly 1 spot every 8 hours
-    // Slows down as it gets higher (logarithmic feel)
-    var base = 4 + (hoursSinceLaunch / 8);
+    // 48-hour arc: starts at 3, climbs to ~18-19 by end of day 2
+    // Roughly 1 spot every 3 hours, with a slight acceleration mid-launch
+    var base = 3 + (hoursSinceLaunch / 3);
 
-    // Add a small wobble based on hour-of-day so it dips occasionally
-    // Uses a simple sine wave tied to the current hour for natural fluctuation
+    // Small wobble so it's not a perfect line
     var hourOfDay = new Date().getUTCHours();
-    var wobble = Math.sin(hourOfDay * 0.8) * 1.2; // swings between -1.2 and +1.2
+    var wobble = Math.sin(hourOfDay * 0.8) * 0.8;
 
     var spots = Math.round(base + wobble);
 
-    // Clamp: never below 4, never above 18 (always room, never full)
-    spots = Math.max(4, Math.min(18, spots));
+    // Clamp: never below 3, never above 19
+    spots = Math.max(3, Math.min(19, spots));
 
     function updateDisplay(n) {
       spotsEl.textContent = n;
@@ -208,10 +206,9 @@
 
     updateDisplay(spots);
 
-    // Optional: one subtle tick while they're on the page (up by 1, once)
-    // Only if they've been reading for 2-5 minutes and there's room
-    if (spots < 18) {
-      var tickDelay = (120 + Math.random() * 180) * 1000; // 2-5 min
+    // One subtle +1 tick after 2-5 min on page
+    if (spots < 19) {
+      var tickDelay = (120 + Math.random() * 180) * 1000;
       setTimeout(function () {
         spots++;
         updateDisplay(spots);
