@@ -1023,7 +1023,7 @@ body::before {
 .spots-counter {
   background: var(--white);
   border-bottom: 1px solid var(--gray-100);
-  padding: 0.6rem 0;
+  padding: 0.9rem 0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -1038,8 +1038,8 @@ body::before {
   gap: 1rem;
 }
 .spots-counter__text {
-  font-size: 0.8125rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--gray-700);
   white-space: nowrap;
   display: flex;
@@ -1064,7 +1064,7 @@ body::before {
 }
 .spots-counter__bar {
   flex: 1;
-  height: 6px;
+  height: 8px;
   background: var(--gray-100);
   border-radius: 3px;
   overflow: hidden;
@@ -1174,7 +1174,7 @@ body::before {
   .urgency-banner__inner { gap: 0.5rem; }
   .urgency-banner p { font-size: 0.75rem; }
   .urgency-banner__link { display: none; }
-  .spots-counter__text { font-size: 0.75rem; }
+  .spots-counter__text { font-size: 0.875rem; }
   .trust-badges { gap: 1rem; }
   .trust-badge svg { width: 22px; height: 22px; }
   .trust-badge span { font-size: 0.5625rem; }
