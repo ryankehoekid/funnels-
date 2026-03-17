@@ -33,8 +33,8 @@
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --container-max: 1200px;
-  --container-narrow: 780px;
+  --container-max: 960px;
+  --container-narrow: 720px;
   --section-pad-y: clamp(4rem, 8vw, 7rem);
   --section-pad-x: clamp(1.25rem, 4vw, 2rem);
 
@@ -214,8 +214,8 @@ em { font-style: italic; }
 }
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
-  font-weight: 600; line-height: 1.1; color: var(--gray-900);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 600; line-height: 1.15; color: var(--gray-900);
   margin-bottom: 1.75rem; letter-spacing: -0.02em;
 }
 .hero__title-accent { color: var(--green-600); display: block; }
@@ -1165,6 +1165,8 @@ body::before {
 .testimonials__grid [data-animate]:nth-child(2) { transition-delay: 0.12s; }
 .testimonials__grid [data-animate]:nth-child(3) { transition-delay: 0.24s; }
 .testimonials__grid [data-animate]:nth-child(4) { transition-delay: 0.36s; }
+.testimonials__grid [data-animate]:nth-child(5) { transition-delay: 0.48s; }
+.testimonials__grid [data-animate]:nth-child(6) { transition-delay: 0.60s; }
 
 /* ── Responsive: sticky CTA + urgency banner ── */
 @media (max-width: 768px) {
