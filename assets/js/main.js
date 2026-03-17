@@ -181,10 +181,25 @@
   var totalSpots = 20;
 
   if (spotsEl && fillEl) {
-    // Seed from session so it stays consistent per visitor
-    var stored = sessionStorage.getItem('wwr_spots');
-    var spots = stored ? parseInt(stored, 10) : 14 + Math.floor(Math.random() * 3); // 14-16
-    sessionStorage.setItem('wwr_spots', spots);
+    // Time-based count: everyone sees the same number at the same time.
+    // Set your launch date here (midnight UTC). Spots climb gradually over days.
+    var launchDate = new Date('2026-03-17T00:00:00Z');
+    var now = Date.now();
+    var hoursSinceLaunch = Math.max(0, (now - launchDate.getTime()) / (1000 * 60 * 60));
+
+    // Base growth: starts at ~4, gains roughly 1 spot every 8 hours
+    // Slows down as it gets higher (logarithmic feel)
+    var base = 4 + (hoursSinceLaunch / 8);
+
+    // Add a small wobble based on hour-of-day so it dips occasionally
+    // Uses a simple sine wave tied to the current hour for natural fluctuation
+    var hourOfDay = new Date().getUTCHours();
+    var wobble = Math.sin(hourOfDay * 0.8) * 1.2; // swings between -1.2 and +1.2
+
+    var spots = Math.round(base + wobble);
+
+    // Clamp: never below 4, never above 18 (always room, never full)
+    spots = Math.max(4, Math.min(18, spots));
 
     function updateDisplay(n) {
       spotsEl.textContent = n;
@@ -193,25 +208,14 @@
 
     updateDisplay(spots);
 
-    // Realistic ticking: random intervals between 15-90 seconds
-    // Mostly goes up, occasionally drops back by 1
-    function scheduleNext() {
-      var delay = (15 + Math.random() * 75) * 1000; // 15s - 90s
+    // Optional: one subtle tick while they're on the page (up by 1, once)
+    // Only if they've been reading for 2-5 minutes and there's room
+    if (spots < 18) {
+      var tickDelay = (120 + Math.random() * 180) * 1000; // 2-5 min
       setTimeout(function () {
-        // 75% chance to go up, 25% to go down
-        // But clamp between 13 and 19 (never hits 20)
-        if (Math.random() < 0.75 && spots < 19) {
-          spots++;
-        } else if (spots > 13) {
-          spots--;
-        }
-        sessionStorage.setItem('wwr_spots', spots);
+        spots++;
         updateDisplay(spots);
-        scheduleNext();
-      }, delay);
+      }, tickDelay);
     }
-
-    // Start first tick after a short initial delay
-    setTimeout(scheduleNext, 8000 + Math.random() * 12000);
   }
 })();
