@@ -345,15 +345,15 @@
       toastEl.classList.remove('is-visible');
     });
 
-    // First toast: show after 4-8 seconds on page
-    var firstDelay = (4 + Math.random() * 4) * 1000;
+    // First toast: show after 8-15 seconds on page
+    var firstDelay = (8 + Math.random() * 7) * 1000;
     setTimeout(function () {
       showToast();
 
-      // Subsequent toasts every 25-45 seconds
+      // Subsequent toasts every 55-90 seconds (feels natural, not spammy)
       setInterval(function () {
         showToast();
-      }, (25 + Math.random() * 20) * 1000);
+      }, (55 + Math.random() * 35) * 1000);
     }, firstDelay);
   }
 })();
