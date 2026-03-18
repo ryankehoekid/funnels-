@@ -215,4 +215,33 @@
       }, tickDelay);
     }
   }
+
+  /* ── Countdown timer (midnight GMT today) ── */
+  var countdownEl = document.getElementById('countdown-display');
+  if (countdownEl) {
+    // Deadline: end of today (March 18 2026) midnight GMT
+    var deadline = new Date('2026-03-19T00:00:00Z');
+
+    function updateCountdown() {
+      var now = Date.now();
+      var diff = deadline.getTime() - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = 'CLOSED';
+        return;
+      }
+
+      var hours = Math.floor(diff / (1000 * 60 * 60));
+      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.textContent =
+        String(hours).padStart(2, '0') + ':' +
+        String(mins).padStart(2, '0') + ':' +
+        String(secs).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
 })();

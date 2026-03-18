@@ -1062,6 +1062,22 @@ body::before {
   0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.4); }
   50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(229, 62, 62, 0); }
 }
+.spots-counter__timer {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+.spots-counter__timer strong {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: #e53e3e;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
 .spots-counter__bar {
   flex: 1;
   height: 8px;
@@ -1174,7 +1190,10 @@ body::before {
   .urgency-banner__inner { gap: 0.5rem; }
   .urgency-banner p { font-size: 0.75rem; }
   .urgency-banner__link { display: none; }
+  .spots-counter__inner { flex-wrap: wrap; gap: 0.5rem; }
   .spots-counter__text { font-size: 0.875rem; }
+  .spots-counter__timer { font-size: 0.8125rem; }
+  .spots-counter__bar { width: 100%; flex: none; }
   .trust-badges { gap: 1rem; }
   .trust-badge svg { width: 22px; height: 22px; }
   .trust-badge span { font-size: 0.5625rem; }
