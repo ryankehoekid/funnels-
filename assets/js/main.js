@@ -186,13 +186,14 @@
     var now = Date.now();
     var hoursSinceLaunch = Math.max(0, (now - launchDate.getTime()) / (1000 * 60 * 60));
 
-    // 48-hour arc: starts at 3, climbs to ~18-19 by end of day 2
-    // Roughly 1 spot every 3 hours, with a slight acceleration mid-launch
-    var base = 3 + (hoursSinceLaunch / 3);
+    // Accelerating curve: fills fast in the first day, nearly full by close
+    // At 0h = 3, at 12h ≈ 11, at 24h ≈ 16, at 36h ≈ 18, at 40h = 19
+    var progress = Math.min(hoursSinceLaunch / 40, 1); // 0→1 over 40 hours
+    var base = 3 + 16 * Math.pow(progress, 0.6);       // ease-out curve
 
     // Small wobble so it's not a perfect line
     var hourOfDay = new Date().getUTCHours();
-    var wobble = Math.sin(hourOfDay * 0.8) * 0.8;
+    var wobble = Math.sin(hourOfDay * 0.8) * 0.5;
 
     var spots = Math.round(base + wobble);
 
