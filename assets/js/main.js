@@ -244,4 +244,116 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
   }
+  /* ── Social proof toast ── */
+  var toastEl = document.getElementById('social-proof-toast');
+  var nameEl = document.getElementById('social-proof-name');
+  var cityEl = document.getElementById('social-proof-city');
+  var closeBtn = document.getElementById('social-proof-close');
+
+  if (toastEl && nameEl && cityEl) {
+    // 500 common UK women's names (popular 1976–1996, now aged 30–50)
+    var names = [
+      'Sarah','Emma','Laura','Claire','Lisa','Rachel','Nicola','Rebecca','Michelle','Victoria',
+      'Samantha','Louise','Amy','Jennifer','Charlotte','Helen','Karen','Gemma','Hannah','Lucy',
+      'Kerry','Joanne','Kelly','Katie','Natalie','Donna','Andrea','Tracy','Sharon','Julie',
+      'Susan','Amanda','Danielle','Stacey','Hayley','Jade','Leanne','Caroline','Alison','Marie',
+      'Catherine','Jodie','Abigail','Sophie','Holly','Lauren','Jessica','Anna','Stephanie','Ruth',
+      'Melissa','Deborah','Heather','Vicky','Wendy','Fiona','Tracey','Dawn','Diane','Mandy',
+      'Alexandra','Beverley','Zoe','Kimberley','Michaela','Lorraine','Tanya','Kirsty','Kate',
+      'Jemma','Natasha','Elaine','Paula','Sandra','Janet','Kayleigh','Nina','Teresa','Jane',
+      'Tina','Jacqueline','Denise','Maria','Lindsey','Lyndsey','Gillian','Colleen','Yvonne',
+      'Chloe','Bethany','Amber','Megan','Ashleigh','Harriet','Lydia','Martha','Rosie','Eleanor',
+      'Francesca','Georgia','Phoebe','Isobel','Ella','Olivia','Molly','Emily','Grace','Erin',
+      'Faye','Cara','Becky','Sian','Siobhan','Sinead','Aisling','Roisin','Niamh','Ciara',
+      'Aoife','Orla','Maeve','Deirdre','Bridget','Eileen','Caitlin','Rhian','Bethan','Cerys',
+      'Megan','Angharad','Ffion','Lowri','Catrin','Nia','Seren','Bronwen','Gwen','Anwen',
+      'Lynne','Jan','Sue','Pat','Joy','Ann','Jean','Mary','Carol','Linda',
+      'Christine','Margaret','Brenda','Pamela','Maureen','Janice','Gloria','Sheila','Irene','Valerie',
+      'Rosemary','Annette','Jill','Lesley','Moira','Bridgette','Theresa','Bernadette','Antoinette','Felicity',
+      'Penelope','Philippa','Arabella','Annabel','Imogen','Serena','Tabitha','Lucinda','Hermione','Camilla',
+      'Matilda','Beatrice','Cordelia','Cecilia','Prudence','Agnes','Adelaide','Flora','Millicent','Winifred',
+      'Marjorie','Dorothy','Edith','Gladys','Elsie','Mabel','Ethel','Ivy','Hilda','Ada',
+      'Poppy','Isla','Ruby','Lily','Daisy','Willow','Freya','Ivy','Elsie','Evie',
+      'Scarlett','Sienna','Alice','Florence','Lola','Millie','Maisie','Eva','Esme','Aria',
+      'Thea','Bella','Luna','Robyn','Mia','Layla','Aisha','Priya','Ananya','Nadia',
+      'Fatima','Amira','Yasmin','Leila','Sara','Hana','Reem','Dina','Maya','Noor',
+      'Aaliyah','Zara','Farida','Sana','Amal','Maryam','Khadija','Ruqayyah','Hafsa','Aisha',
+      'Priyanka','Kavita','Sunita','Anita','Rina','Meera','Deepa','Pooja','Neha','Swati',
+      'Sneha','Divya','Shilpa','Nisha','Rekha','Geeta','Shalini','Anjali','Jyoti','Aarti',
+      'Lian','Mei','Xia','Ying','Jing','Chen','Wei','Fang','Yan','Hua',
+      'Abbie','Adele','Adrienne','Agatha','Aggie','Ailsa','Aimee','Ainsley','Alexa','Alexis',
+      'Alma','Althea','Alyssa','Amara','Amelie','Andie','Angel','Angie','Annie','Anya',
+      'April','Ariana','Ashlee','Audrey','Aurora','Autumn','Ava','Avery','Barbara','Belle',
+      'Bernice','Bess','Beth','Bianca','Blair','Bonnie','Brenda','Brianna','Britt','Brooke',
+      'Bryony','Candice','Carla','Carlene','Carmen','Carole','Cassandra','Cassie','Celeste','Chantal',
+      'Charity','Charlene','Chelsea','Cherie','Cheryl','Christina','Claudia','Colette','Connie','Coral',
+      'Courtney','Crystal','Cynthia','Dahlia','Danica','Darcy','Darlene','Delia','Demi','Desiree',
+      'Diana','Dolly','Dominique','Dora','Eden','Edie','Effie','Elena','Elise','Elizabeth',
+      'Ellie','Eloise','Elsa','Emilia','Erica','Estelle','Esther','Eugenie','Eve','Evelyn',
+      'Faith','Felicia','Fern','Fleur','Frankie','Freya','Gabby','Gabriella','Gail','Gaynor',
+      'Genevieve','Georgie','Geraldine','Gina','Ginny','Giselle','Gracie','Greta','Gwendoline','Halima',
+      'Harper','Harriet','Hazel','Heidi','Helena','Henrietta','Hope','Ida','Ines','Ingrid',
+      'Iris','Isabella','Isadora','Ivy','Jacinta','Jackie','Jaime','Jamie','Janine','Jasmine',
+      'Jeanette','Jenna','Jessie','Joan','Jocelyn','Josie','Judith','Julia','Juliet','June',
+      'Justine','Kara','Karina','Katherine','Kathleen','Katrina','Kay','Keira','Kelsey','Kim',
+      'Kirsten','Kitty','Kristen','Kristina','Lara','Latoya','Lea','Leah','Lena','Letitia',
+      'Libby','Lilian','Lily','Lindsay','Liz','Lizzie','Lottie','Louisa','Lucia','Lucille',
+      'Lydia','Madeleine','Maggie','Maisy','Mallory','Marcia','Margot','Marianne','Marissa','Marlene',
+      'Martina','Maxine','Meredith','Mia','Miranda','Miriam','Monica','Morgan','Muriel','Myrtle',
+      'Nadine','Nancy','Naomi','Nell','Nessa','Nicky','Nicole','Nora','Noreen','Olive',
+      'Oona','Paige','Paloma','Patricia','Patsy','Pearl','Peggy','Penny','Petra','Pippa'
+    ];
+
+    // 80 UK cities & towns for variety
+    var cities = [
+      'London','Manchester','Birmingham','Leeds','Liverpool','Bristol','Sheffield','Edinburgh',
+      'Glasgow','Cardiff','Belfast','Newcastle','Nottingham','Leicester','Brighton','Southampton',
+      'Oxford','Cambridge','Reading','Exeter','Bath','York','Chester','Canterbury',
+      'Coventry','Derby','Plymouth','Stoke-on-Trent','Wolverhampton','Sunderland','Swansea','Aberdeen',
+      'Dundee','Inverness','Perth','Stirling','Cheltenham','Bournemouth','Portsmouth','Norwich',
+      'Ipswich','Colchester','Milton Keynes','Northampton','Peterborough','Lincoln','Gloucester','Worcester',
+      'Hereford','Shrewsbury','Stafford','Warwick','Stratford-upon-Avon','Harrogate','Scarborough','Blackpool',
+      'Preston','Lancaster','Carlisle','Durham','Middlesbrough','Huddersfield','Halifax','Wakefield',
+      'Bradford','Bolton','Stockport','Wigan','Luton','Watford','St Albans','Guildford',
+      'Maidstone','Tunbridge Wells','Eastbourne','Hastings','Salisbury','Taunton','Torquay','Truro'
+    ];
+
+    // Time labels for realism
+    var timesAgo = [
+      '2 minutes ago', '3 minutes ago', '5 minutes ago', '8 minutes ago',
+      '12 minutes ago', '15 minutes ago', '22 minutes ago', '30 minutes ago',
+      '45 minutes ago', '1 hour ago', '2 hours ago', '3 hours ago'
+    ];
+
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function showToast() {
+      nameEl.textContent = pickRandom(names);
+      cityEl.textContent = pickRandom(cities);
+      toastEl.classList.add('is-visible');
+
+      // Auto-hide after 5 seconds
+      setTimeout(function () {
+        toastEl.classList.remove('is-visible');
+      }, 5000);
+    }
+
+    // Close button
+    closeBtn.addEventListener('click', function () {
+      toastEl.classList.remove('is-visible');
+    });
+
+    // First toast: show after 4-8 seconds on page
+    var firstDelay = (4 + Math.random() * 4) * 1000;
+    setTimeout(function () {
+      showToast();
+
+      // Subsequent toasts every 25-45 seconds
+      setInterval(function () {
+        showToast();
+      }, (25 + Math.random() * 20) * 1000);
+    }, firstDelay);
+  }
 })();

@@ -1211,3 +1211,103 @@ body::before {
 ::-webkit-scrollbar-track { background: var(--gray-50); }
 ::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
+
+/* ═══════════════════════════════════════════════
+   SOCIAL PROOF TOAST
+   ═══════════════════════════════════════════════ */
+.social-proof-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(1rem) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+.social-proof-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.social-proof-toast__inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-left: 4px solid var(--green-600);
+  border-radius: 0.625rem;
+  padding: 0.875rem 1.125rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  max-width: 360px;
+}
+
+.social-proof-toast__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--green-50);
+  color: var(--green-600);
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.social-proof-toast__text {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--gray-800);
+}
+
+.social-proof-toast__text strong {
+  color: var(--gray-950);
+}
+
+.social-proof-toast__action {
+  display: block;
+  color: var(--gray-500);
+  font-size: 0.75rem;
+  margin-top: 0.125rem;
+}
+
+.social-proof-toast__action em {
+  color: var(--green-700);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.social-proof-toast__close {
+  background: none;
+  border: none;
+  color: var(--gray-400);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.social-proof-toast__close:hover {
+  color: var(--gray-700);
+}
+
+/* On mobile, full width at bottom */
+@media (max-width: 480px) {
+  .social-proof-toast {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 5rem; /* above sticky CTA */
+  }
+
+  .social-proof-toast__inner {
+    max-width: 100%;
+  }
+}
