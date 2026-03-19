@@ -178,7 +178,7 @@ em { font-style: italic; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4rem var(--section-pad-x) 4rem;
+  padding: 1.25rem var(--section-pad-x) 4rem;
   background: linear-gradient(170deg, var(--white) 0%, var(--green-50) 40%, var(--cream) 100%);
   position: relative;
   overflow: hidden;
@@ -196,7 +196,7 @@ em { font-style: italic; }
   font-size: 0.8125rem; font-weight: 500; color: var(--green-700);
   background: rgba(42,157,97,0.08); border: 1px solid rgba(42,157,97,0.15);
   padding: 0.5rem 1.25rem; border-radius: 100px;
-  margin-bottom: 1.75rem; letter-spacing: 0.02em;
+  margin-bottom: 1.5rem; letter-spacing: 0.02em;
 }
 .hero__badge-dot {
   width: 6px; height: 6px; border-radius: 50%;
@@ -716,7 +716,7 @@ em { font-style: italic; }
 
 @media (max-width: 480px) {
   .agitation__grid { grid-template-columns: 1fr; }
-  .hero { min-height: auto; padding: 5rem var(--section-pad-x) 3rem; }
+  .hero { min-height: auto; padding: 1rem var(--section-pad-x) 3rem; }
   .hero__badge { font-size: 0.6875rem; padding: 0.4rem 1rem; }
   .hero__title { font-size: 2.25rem; }
   .included__bonuses-header span::before,
