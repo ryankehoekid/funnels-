@@ -218,8 +218,8 @@
   /* ── Countdown timer (midnight GMT today) ── */
   var countdownEl = document.getElementById('countdown-display');
   if (countdownEl) {
-    // Extension deadline: Friday 21st March 2026 at 9pm GMT
-    var deadline = new Date('2026-03-21T21:00:00Z');
+    // Extension deadline: midnight GMT tonight (19th March 2026)
+    var deadline = new Date('2026-03-20T00:00:00Z');
 
     function updateCountdown() {
       var now = Date.now();
