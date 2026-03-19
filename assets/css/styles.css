@@ -1041,10 +1041,10 @@ body::before {
   font-size: 1rem;
   font-weight: 600;
   color: var(--gray-700);
-  white-space: nowrap;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 .spots-counter__text strong {
   color: var(--green-700);
@@ -1190,8 +1190,8 @@ body::before {
   .urgency-banner__inner { gap: 0.5rem; }
   .urgency-banner p { font-size: 0.75rem; }
   .urgency-banner__link { display: none; }
-  .spots-counter__inner { flex-wrap: wrap; gap: 0.5rem; }
-  .spots-counter__text { font-size: 0.875rem; }
+  .spots-counter__inner { flex-wrap: wrap; gap: 0.5rem; justify-content: center; text-align: center; }
+  .spots-counter__text { font-size: 0.8125rem; justify-content: center; }
   .spots-counter__timer { font-size: 0.8125rem; }
   .spots-counter__bar { width: 100%; flex: none; }
   .trust-badges { gap: 1rem; }
