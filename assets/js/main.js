@@ -178,27 +178,25 @@
   /* ── Spots counter (urgency/scarcity) ── */
   var spotsEl = document.getElementById('spots-taken');
   var fillEl = document.getElementById('spots-fill');
-  var totalSpots = 20;
+  var totalSpots = 25;
 
   if (spotsEl && fillEl) {
-    // 48-hour launch window starting March 17 2026 at 8am GMT
-    var launchDate = new Date('2026-03-17T08:00:00Z');
+    // Extension: original 20 sold out, 5 more reopened on March 19
+    var extensionStart = new Date('2026-03-19T09:00:00Z');
     var now = Date.now();
-    var hoursSinceLaunch = Math.max(0, (now - launchDate.getTime()) / (1000 * 60 * 60));
+    var hoursSinceExtension = Math.max(0, (now - extensionStart.getTime()) / (1000 * 60 * 60));
 
-    // Accelerating curve: fills fast in the first day, nearly full by close
-    // At 0h = 3, at 12h ≈ 11, at 24h ≈ 16, at 36h ≈ 18, at 40h = 19
-    var progress = Math.min(hoursSinceLaunch / 40, 1); // 0→1 over 40 hours
-    var base = 3 + 16 * Math.pow(progress, 0.6);       // ease-out curve
+    // Extension spots fill over ~36 hours: 20 base + 0-5 new
+    var progress = Math.min(hoursSinceExtension / 36, 1);
+    var extensionFilled = Math.floor(5 * Math.pow(progress, 0.7));
 
-    // Small wobble so it's not a perfect line
+    // Small wobble
     var hourOfDay = new Date().getUTCHours();
-    var wobble = Math.sin(hourOfDay * 0.8) * 0.5;
+    var wobble = Math.sin(hourOfDay * 0.8) * 0.4;
+    extensionFilled = Math.round(extensionFilled + wobble);
+    extensionFilled = Math.max(0, Math.min(4, extensionFilled));
 
-    var spots = Math.round(base + wobble);
-
-    // Clamp: never below 3, never above 19
-    spots = Math.max(3, Math.min(19, spots));
+    var spots = 20 + extensionFilled;
 
     function updateDisplay(n) {
       spotsEl.textContent = n;
@@ -208,7 +206,7 @@
     updateDisplay(spots);
 
     // One subtle +1 tick after 2-5 min on page
-    if (spots < 19) {
+    if (spots < 24) {
       var tickDelay = (120 + Math.random() * 180) * 1000;
       setTimeout(function () {
         spots++;
@@ -220,8 +218,8 @@
   /* ── Countdown timer (midnight GMT today) ── */
   var countdownEl = document.getElementById('countdown-display');
   if (countdownEl) {
-    // Deadline: end of today (March 18 2026) midnight GMT
-    var deadline = new Date('2026-03-19T00:00:00Z');
+    // Extension deadline: Friday 21st March 2026 at 9pm GMT
+    var deadline = new Date('2026-03-21T21:00:00Z');
 
     function updateCountdown() {
       var now = Date.now();
