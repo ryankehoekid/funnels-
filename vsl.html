@@ -87,12 +87,22 @@
     }
 
     .headline mark {
-      background: rgba(30, 127, 77, 0.1);
+      background: none;
       color: inherit;
-      padding: 0.05em 0.3em;
-      border-radius: 4px;
-      box-decoration-break: clone;
-      -webkit-box-decoration-break: clone;
+      position: relative;
+      padding: 0;
+    }
+
+    .headline mark::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0.05em;
+      height: 3px;
+      background: var(--green-600);
+      border-radius: 2px;
+      opacity: 0.5;
     }
 
     /* ── DECK ── */
