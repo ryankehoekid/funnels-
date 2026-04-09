@@ -233,7 +233,16 @@
       margin: 0 auto clamp(2.5rem, 5vw, 4rem);
     }
 
-    /* ── TESTIMONIALS ── */
+    /* ── VIDEO TESTIMONIAL ── */
+    .video-testimonial {
+      max-width: 480px;
+      margin: 0 auto;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    }
+
     .testimonials-label {
       font-size: 0.78rem;
       font-weight: 600;
@@ -367,65 +376,22 @@
     <!-- Divider -->
     <div class="divider"></div>
 
-    <!-- Testimonial Placeholders -->
-    <p class="testimonials-label">What Others Are Saying</p>
+    <!-- Video Testimonial -->
+    <p class="testimonials-label">Hear From Our Clients Themselves</p>
 
-    <div class="testimonials">
-
-      <div class="testimonial">
-        <div class="testimonial__stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial__quote">"Placeholder testimonial. Replace with a real client quote about their transformation and results."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">A</div>
-          <div>
-            <div class="testimonial__name">Client Name</div>
-            <div class="testimonial__detail">Age, Location</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial">
-        <div class="testimonial__stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial__quote">"Placeholder testimonial. Replace with a real client quote about their experience working with Ryan."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">B</div>
-          <div>
-            <div class="testimonial__name">Client Name</div>
-            <div class="testimonial__detail">Age, Location</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial">
-        <div class="testimonial__stars">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <p class="testimonial__quote">"Placeholder testimonial. Replace with a real client quote about the call and the programme."</p>
-        <div class="testimonial__author">
-          <div class="testimonial__avatar">C</div>
-          <div>
-            <div class="testimonial__name">Client Name</div>
-            <div class="testimonial__detail">Age, Location</div>
-          </div>
-        </div>
-      </div>
-
+    <div class="video-testimonial">
+      <div id="vidalytics_embed_XbioZ5M_SgfKg7wp" style="width: 100%; position:relative; padding-top: 177.78%;"></div>
+      <script type="text/javascript">
+      (function (v, i, d, a, l, y, t, c, s) {
+          y='_'+d.toLowerCase();c=d+'L';if(!v[d]){v[d]={};}if(!v[c]){v[c]={};}if(!v[y]){v[y]={};}var vl='Loader',vli=v[y][vl],vsl=v[c][vl + 'Script'],vlf=v[c][vl + 'Loaded'],ve='Embed';
+          if (!vsl){vsl=function(u,cb){
+              if(t){cb();return;}s=i.createElement("script");s.type="text/javascript";s.async=1;s.src=u;
+              if(s.readyState){s.onreadystatechange=function(){if(s.readyState==="loaded"||s.readyState=="complete"){s.onreadystatechange=null;vlf=1;cb();}};}else{s.onload=function(){vlf=1;cb();};}
+              i.getElementsByTagName("head")[0].appendChild(s);
+          };}
+          vsl(l+'loader.min.js',function(){if(!vli){var vlc=v[c][vl];vli=new vlc();}vli.loadScript(l+'player.min.js',function(){var vec=v[d][ve];t=new vec();t.run(a);});});
+      })(window, document, 'Vidalytics', 'vidalytics_embed_XbioZ5M_SgfKg7wp', 'https://fast.vidalytics.com/embeds/rZCGAMlZ/XbioZ5M_SgfKg7wp/');
+      </script>
     </div>
 
   </div>
