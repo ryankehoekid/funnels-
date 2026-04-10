@@ -202,7 +202,7 @@
       transition: all 0.25s var(--ease-out);
       text-decoration: none;
       box-shadow: 0 2px 12px rgba(30, 127, 77, 0.2);
-      margin-bottom: 0.5rem;
+      margin-bottom: clamp(3rem, 5vw, 4.5rem);
     }
 
     .cta-btn:hover {
@@ -218,10 +218,14 @@
       flex-shrink: 0;
     }
 
-    .cta-sub {
-      display: block;
-      font-size: 0.82rem;
-      color: var(--gray-400);
+    .cta-above {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .cta-wrapper-spacing {
       margin-bottom: clamp(3rem, 5vw, 4.5rem);
     }
 
@@ -367,11 +371,11 @@
     </div>
 
     <!-- Book a Call Button -->
+    <p class="cta-above">And Fill Out The Application Below To Book A Call With Me</p>
     <a href="#book" class="cta-btn">
-      Book a Call Now
+      Get Started
       <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
-    <span class="cta-sub">Free, no-obligation strategy call with Ryan</span>
 
     <!-- Divider -->
     <div class="divider"></div>
