@@ -225,8 +225,10 @@
       font-weight: 500;
     }
 
-    .cta-wrapper-spacing {
-      margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    .typeform-wrapper {
+      max-width: 700px;
+      margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+      min-height: 500px;
     }
 
     /* ── DIVIDER ── */
@@ -366,12 +368,12 @@
       <wistia-player media-id="7xq1h09p1y" aspect="1.7777777777777777"></wistia-player>
     </div>
 
-    <!-- Book a Call Button -->
+    <!-- Typeform Embed -->
     <p class="cta-above">Fill Out The Application Below To Book Your Free Consultation Call</p>
-    <a href="#book" class="cta-btn">
-      Get Started
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <div class="typeform-wrapper">
+      <div data-tf-live="01KF6KM2MX3ZB0DYERAQCJCG2S"></div>
+      <script src="//embed.typeform.com/next/embed.js"></script>
+    </div>
 
     <!-- Divider -->
     <div class="divider"></div>
