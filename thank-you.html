@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You — Your Call Is Booked | Ryan</title>
+
+  <!-- Fonts: DM Sans (modern, clean, high-end sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-50:  #f0faf4;
+      --green-100: #dcf2e6;
+      --green-600: #1e7f4d;
+      --green-700: #1a6640;
+      --green-800: #185236;
+      --green-900: #14432d;
+      --white:     #ffffff;
+      --off-white: #fafbfc;
+      --gray-100:  #f3f4f6;
+      --gray-200:  #e5e7eb;
+      --gray-400:  #9ca3af;
+      --gray-500:  #6b7280;
+      --gray-600:  #4b5563;
+      --gray-800:  #1f2937;
+      --gray-900:  #111827;
+      --gold:      #d4a843;
+      --font:      'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--gray-800);
+      background: var(--white);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── PAGE ── */
+    .page {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 2rem) clamp(2rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    /* ── SUCCESS BADGE ── */
+    .success-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green-700);
+      background: var(--green-50);
+      border: 1px solid var(--green-100);
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .success-badge svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--green-600);
+    }
+
+    /* ── MAIN HEADLINE ── */
+    .headline {
+      font-family: var(--font);
+      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--gray-900);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.025em;
+    }
+
+    .headline em {
+      font-style: normal;
+      color: var(--green-600);
+    }
+
+    .headline mark {
+      background: none;
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(30, 127, 77, 0.5);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 0.15em;
+    }
+
+    /* ── DECK ── */
+    .deck {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      color: var(--gray-500);
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ── NEXT STEPS BOX ── */
+    .next-steps {
+      max-width: 720px;
+      margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+      background: var(--off-white);
+      border: 1px solid var(--gray-100);
+      border-radius: 16px;
+      padding: clamp(1.75rem, 3vw, 2.5rem);
+      text-align: left;
+    }
+
+    .next-steps__title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .next-steps__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .next-steps__item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .next-steps__num {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--green-600);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .next-steps__text {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      padding-top: 0.25rem;
+    }
+
+    .next-steps__text strong {
+      color: var(--gray-900);
+      font-weight: 600;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gray-200);
+      margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--gray-900);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--gray-500);
+      max-width: 640px;
+      margin: 0 auto clamp(2.5rem, 4vw, 3.5rem);
+    }
+
+    /* ── BREAKOUT VIDEOS GRID ── */
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 1.75rem;
+      margin-bottom: clamp(3rem, 5vw, 4.5rem);
+    }
+
+    .video-block {
+      text-align: left;
+    }
+
+    .video-block__title {
+      font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+
+    .video-block__media {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: var(--green-50);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--gray-100);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      transition: all 0.25s var(--ease-out);
+      cursor: pointer;
+    }
+
+    .video-block__media:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+
+    .video-block__inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .video-block__play {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--green-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s var(--ease-out);
+      box-shadow: 0 4px 16px rgba(30, 127, 77, 0.2);
+    }
+
+    .video-block__media:hover .video-block__play {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(30, 127, 77, 0.3);
+    }
+
+    .video-block__play svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--white);
+      margin-left: 2px;
+    }
+
+    .video-block__label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--gray-400);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      max-width: 580px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--gray-100);
+      font-size: 0.85rem;
+      color: var(--gray-400);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .videos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .headline { font-size: 1.85rem; }
+      .video-block__play { width: 48px; height: 48px; }
+      .video-block__play svg { width: 18px; height: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- Success Badge -->
+    <span class="success-badge">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      Your Call Is Booked
+    </span>
+
+    <!-- Main Headline -->
+    <h1 class="headline">
+      Thank You. <em>Now Watch This Before Your Call.</em>
+    </h1>
+
+    <!-- Deck -->
+    <p class="deck">
+      Your free consultation call is confirmed. Before we speak, watch the breakout videos below — they'll give you the context you need so we can hit the ground running on our call.
+    </p>
+
+    <!-- Next Steps Box -->
+    <div class="next-steps">
+      <p class="next-steps__title">What Happens Next</p>
+      <ul class="next-steps__list">
+        <li class="next-steps__item">
+          <div class="next-steps__num">1</div>
+          <div class="next-steps__text"><strong>Check your inbox.</strong> You'll receive a confirmation email with your call details and calendar invite.</div>
+        </li>
+        <li class="next-steps__item">
+          <div class="next-steps__num">2</div>
+          <div class="next-steps__text"><strong>Watch the breakout videos below.</strong> These cover the core methodology so you'll get the most out of our call.</div>
+        </li>
+        <li class="next-steps__item">
+          <div class="next-steps__num">3</div>
+          <div class="next-steps__text"><strong>Show up to your call.</strong> Be on time, bring your questions, and come ready to take action.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Breakout Videos Section -->
+    <p class="section-label">Required Watching</p>
+    <h2 class="section-title">Watch These Before Our Call</h2>
+    <p class="section-sub">Each video covers a key piece of the methodology. Take notes, write down questions, and bring them to our call.</p>
+
+    <!-- Videos Grid -->
+    <div class="videos">
+
+      <!-- Video 1 -->
+      <div class="video-block">
+        <h3 class="video-block__title">Breakout Video Title #1</h3>
+        <div class="video-block__media">
+          <div class="video-block__inner">
+            <div class="video-block__play">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+            </div>
+            <span class="video-block__label">Video Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="video-block">
+        <h3 class="video-block__title">Breakout Video Title #2</h3>
+        <div class="video-block__media">
+          <div class="video-block__inner">
+            <div class="video-block__play">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+            </div>
+            <span class="video-block__label">Video Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="video-block">
+        <h3 class="video-block__title">Breakout Video Title #3</h3>
+        <div class="video-block__media">
+          <div class="video-block__inner">
+            <div class="video-block__play">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+            </div>
+            <span class="video-block__label">Video Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="video-block">
+        <h3 class="video-block__title">Breakout Video Title #4</h3>
+        <div class="video-block__media">
+          <div class="video-block__inner">
+            <div class="video-block__play">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
+            </div>
+            <span class="video-block__label">Video Placeholder</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer note -->
+    <p class="footer-note">
+      Questions before our call? Reply to your confirmation email and I'll get back to you.
+    </p>
+
+  </div>
+
+</body>
+</html>
